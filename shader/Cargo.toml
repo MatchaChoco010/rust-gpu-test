@@ -1,0 +1,19 @@
+[package]
+name = "shader"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["lib", "dylib"]
+
+[[bin]]
+name = "builder"
+path = "bin/builder.rs"
+test = false
+bench = false
+
+[dependencies]
+spirv-std = "0.9"
+
+[target.'cfg(not(target_arch = "spirv"))'.dependencies]
+spirv-builder = "0.9"
